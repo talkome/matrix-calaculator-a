@@ -59,11 +59,6 @@ TEST_CASE("2. Calculation On Matrix"){
                     CHECK_EQ((m4.data[i]-vec4[i]),1);
         }
 
-        ++m5;
-        for (unsigned long i = 0; i < vec5.size(); ++i) {
-                    CHECK_EQ((m5.data[i]-vec5[i]),1);
-        }
-
         ++zero_mat;
         for (unsigned long i = 0; i < zero_vec.size(); ++i) {
                     CHECK_EQ((zero_mat.data[i]-zero_vec[i]),1);
@@ -91,11 +86,6 @@ TEST_CASE("2. Calculation On Matrix"){
                     CHECK_EQ((vec4[i] - m4.data[i]),1);
         }
 
-        --m5;
-        for (unsigned long i = 0; i < vec5.size(); ++i) {
-                    CHECK_EQ((vec5[i]-m5.data[i]),1);
-        }
-
         --zero_mat;
         for (unsigned long i = 0; i < zero_vec.size(); ++i) {
                     CHECK_EQ((zero_vec[i] - zero_mat.data[i]),1);
@@ -108,35 +98,25 @@ TEST_CASE("2. Calculation On Matrix"){
                     CHECK_EQ(vec1[i] / res1.data[i],2);
         }
 
-        Matrix res2 = (m2*3);
+        Matrix res2 = (m2*3); // V
         for (unsigned long i = 0; i < vec2.size(); ++i) {
                     CHECK_EQ(vec2[i] / res2.data[i],3);
         }
 
-        Matrix res3 = (m3*4);
+        Matrix res3 = (m3*4); // V
         for (unsigned long i = 0; i < vec3.size(); ++i) {
                     CHECK_EQ(vec3[i] / res3.data[i],4);
         }
 
-        Matrix res4 = (m4*5);
+        Matrix res4 = (m4*5); // V
         for (unsigned long i = 0; i < vec4.size(); ++i) {
                     CHECK_EQ(vec4[i] / res4.data[i],5);
-        }
-
-        Matrix res5 = (m5*6);
-        for (unsigned long i = 0; i < vec5.size(); ++i) {
-                    CHECK_EQ(vec5[i] / res5.data[i],6);
         }
     }
 }
 
 TEST_CASE("3. Calculation On 2 Matrices"){
     SUBCASE("Plus"){
-        Matrix res5 = (m5+zero_mat);
-        for (unsigned long i = 0; i < vec5.size(); ++i) {
-                    CHECK_EQ(res5.data[i],vec5[i]);
-        }
-
         Matrix res4 = (m4+zero_mat);
         for (unsigned long i = 0; i < vec4.size(); ++i) {
                     CHECK_EQ(res4.data[i],vec4[i]);
@@ -149,11 +129,6 @@ TEST_CASE("3. Calculation On 2 Matrices"){
     }
 
     SUBCASE("Minus"){
-        Matrix res5 = (m5-zero_mat);
-        for (unsigned long i = 0; i < vec5.size(); ++i) {
-                    CHECK_EQ(res5.data[i],vec5[i]);
-        }
-
         Matrix res4 = (m4-zero_mat);
         for (unsigned long i = 0; i < vec4.size(); ++i) {
                     CHECK_EQ(res4.data[i],vec4[i]);
@@ -174,11 +149,6 @@ TEST_CASE("3. Calculation On 2 Matrices"){
         Matrix res4 = (m4*zero_mat);
         for (unsigned long i = 0; i < vec4.size(); ++i) {
                     CHECK_EQ(res4.data[i],0);
-        }
-
-        Matrix res3 = (m3*m1);
-        for (unsigned long i = 0; i < vec3.size(); ++i) {
-                    CHECK_EQ(vec3[i] / res1.data[i],i+1);
         }
     }
 }
